@@ -52,12 +52,12 @@ const config = {
 export default class Start extends Component {
   render() {
     return (
-      <Form {...formItemLayout}>
+      <Form className="start-form" {...formItemLayout}>
         <Form.Item label="类型">
-          <Select placeholder="选择类型" style={{width: '50%'}}>
+          <Select placeholder="选择类型" defaultValue={config.type[0].id} style={{width: '50%'}}>
             {
               config.type.map(type =>
-                <Option value={type.id}>{type.text}</Option>
+                <Option key={type.id} value={type.id}>{type.text}</Option>
               )
             }
           </Select>
@@ -67,7 +67,7 @@ export default class Start extends Component {
           <Radio.Group defaultValue={config.scope[0].id} buttonStyle="solid">
             {
               config.scope.map(scope =>
-                <Radio.Button value={scope.id}>{scope.text}</Radio.Button>
+                <Radio.Button key={scope.id} value={scope.id}>{scope.text}</Radio.Button>
               )
             }
           </Radio.Group>
@@ -87,14 +87,14 @@ export default class Start extends Component {
         </Form.Item>
 
         <Form.Item label="题数">
-          <Slider {...config.number} tooltipVisible="true" style={{width: '50%'}}/>
+          <Slider {...config.number} tooltipVisible={true} style={{width: '50%'}}/>
         </Form.Item>
 
         <Form.Item label="输出类型">
-          <Select style={{width: '50%'}}>
+          <Select defaultValue={config.output[0].id} style={{width: '50%'}}>
             {
               config.output.map(output =>
-                <Option value={output.id}>{output.text}</Option>
+                <Option key={output.id} value={output.id}>{output.text}</Option>
               )
             }
           </Select>
